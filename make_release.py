@@ -17,10 +17,10 @@ README = """R36SX Kids Menu {v} - ready pack ({lang})
 
 EN: 1) Make a backup copy of your SD card. 2) Copy the folders "cubegm" and "roms" from this zip to the root of the
     SD card, answer "Replace / Merge". 3) Done. Want your own colours, texts or pictures? Use the builder:
-    https://github.com/YOUR-USER/r36sx-kids-menu
+    https://github.com/Daniel-Paschoalinoto/r36sx-kids-menu
 PT: 1) Faça uma cópia de segurança do cartão SD. 2) Copie as pastas "cubegm" e "roms" deste zip para a raiz do cartão
     e responda "Substituir / Mesclar". 3) Pronto. Quer cores, textos ou imagens suas? Use o gerador:
-    https://github.com/YOUR-USER/r36sx-kids-menu
+    https://github.com/Daniel-Paschoalinoto/r36sx-kids-menu
 
 Only works with the original firmware this tool recognises (python build.py --check).
 Só funciona com o firmware original que a ferramenta reconhece (python build.py --check).

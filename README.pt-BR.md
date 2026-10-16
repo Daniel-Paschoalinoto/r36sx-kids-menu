@@ -27,7 +27,7 @@ Só quatro botões grandes – **Jogos · Vídeos · Músicas · Fotos** – com
 
 > ⚠️ **Faça antes uma cópia de segurança do cartão SD.** Sempre.
 
-**Opção A – pacote pronto (mais rápido).** Baixe o `R36SX-Kids-Menu-…zip` na página de [Releases](../../releases), abra, copie as pastas `cubegm` e `roms` para o cartão SD (responda *Substituir/Mesclar*). Pronto.
+**Opção A – pacote pronto (mais rápido; será publicado após teste em aparelho – até lá use a Opção B).** Baixe o `R36SX-Kids-Menu-…zip` na página de [Releases](../../releases), abra, copie as pastas `cubegm` e `roms` para o cartão SD (responda *Substituir/Mesclar*). Pronto.
 
 **Opção B – montar do seu jeito (suas cores, foto e textos):**
 
