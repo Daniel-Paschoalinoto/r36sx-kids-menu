@@ -29,7 +29,7 @@ Only four big buttons – **Games · Videos · Music · Photos** – your own co
 
 > ⚠️ **Make a backup copy of your SD card first.** Always.
 
-**Option A – ready pack (fastest).** Download `R36SX-Kids-Menu-…zip` from the [Releases](../../releases) page, open it, copy the `cubegm` and `roms` folders onto your SD card (answer *Replace/Merge*). Done.
+**Option A – ready pack (fastest).** Download the zip for your language from the [`packs`](packs) folder (click the file, then the download button ⬇), open it, copy the `cubegm` and `roms` folders onto your SD card (answer *Replace/Merge*). Done.
 
 **Option B – build your own look (your colours, photo, texts):**
 

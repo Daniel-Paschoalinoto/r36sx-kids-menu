@@ -10,7 +10,7 @@
 
 ## 1. Jeito mais rápido: o pacote pronto
 
-1. Baixe o `R36SX-Kids-Menu-…-pt-BR.zip` na página **Releases** do projeto.
+1. Baixe o `R36SX-Kids-Menu-…-pt-BR.zip` na pasta [`packs`](../../packs) do projeto (clique no arquivo e depois no botão de download).
 2. Abra o zip. Copie as pastas **`cubegm`** e **`roms`** para a **raiz do cartão SD**. Quando o Windows perguntar, escolha **Substituir / Mesclar**.
 3. Coloque o cartão no aparelho. Pronto.
 
