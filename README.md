@@ -11,6 +11,8 @@ Only four big buttons – **Games · Videos · Music · Photos** – your own co
 
 > The pictures above are the **built-in placeholders**. You replace them with your own in one minute (see below).
 
+> ⚠️ **Status: early release (v1.0.0).** The menu, the code changes and the build tool were tested on **one** real console (R36SX V2.6 clone, HiChip HC1600A). The *build tool* and the placeholder-art packs were checked on a PC and the file structure matches the original, but the packs were **not yet run on a console**. Please test and [open an issue](../../issues) with your result (works / doesn't, and your model). Keep a backup of your SD card.
+
 ## What you get
 
 - 🧒 Menu reduced to **Games / Videos / Music / Photos** (settings, e-books and console list are hidden).
@@ -27,7 +29,7 @@ Only four big buttons – **Games · Videos · Music · Photos** – your own co
 
 > ⚠️ **Make a backup copy of your SD card first.** Always.
 
-**Option A – ready pack (fastest; being published after a hardware test – use Option B until then).** Download `R36SX-Kids-Menu-…zip` from the [Releases](../../releases) page, open it, copy the `cubegm` and `roms` folders onto your SD card (answer *Replace/Merge*). Done.
+**Option A – ready pack (fastest).** Download `R36SX-Kids-Menu-…zip` from the [Releases](../../releases) page, open it, copy the `cubegm` and `roms` folders onto your SD card (answer *Replace/Merge*). Done.
 
 **Option B – build your own look (your colours, photo, texts):**
 

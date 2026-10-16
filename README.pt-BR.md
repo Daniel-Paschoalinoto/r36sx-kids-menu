@@ -11,6 +11,8 @@ Só quatro botões grandes – **Jogos · Vídeos · Músicas · Fotos** – com
 
 > As imagens acima são os **placeholders** (imagens de exemplo) que já vêm no projeto. Você troca pelas suas em um minuto.
 
+> ⚠️ **Status: versão inicial (v1.0.0).** O menu, as alterações de código e a ferramenta foram testados em **um** console real (clone R36SX V2.6, HiChip HC1600A). A *ferramenta de build* e os pacotes com imagens de exemplo foram verificados no PC e a estrutura dos arquivos bate com a original, mas os pacotes **ainda não foram executados num console**. Por favor teste e [abra uma issue](../../issues) com o resultado (funcionou / não, e o seu modelo). Mantenha um backup do cartão SD.
+
 ## O que você ganha
 
 - 🧒 Menu reduzido a **Jogos / Vídeos / Músicas / Fotos** (ajustes, e-books e lista de consoles ficam ocultos).
@@ -27,7 +29,7 @@ Só quatro botões grandes – **Jogos · Vídeos · Músicas · Fotos** – com
 
 > ⚠️ **Faça antes uma cópia de segurança do cartão SD.** Sempre.
 
-**Opção A – pacote pronto (mais rápido; será publicado após teste em aparelho – até lá use a Opção B).** Baixe o `R36SX-Kids-Menu-…zip` na página de [Releases](../../releases), abra, copie as pastas `cubegm` e `roms` para o cartão SD (responda *Substituir/Mesclar*). Pronto.
+**Opção A – pacote pronto (mais rápido).** Baixe o `R36SX-Kids-Menu-…zip` na página de [Releases](../../releases), abra, copie as pastas `cubegm` e `roms` para o cartão SD (responda *Substituir/Mesclar*). Pronto.
 
 **Opção B – montar do seu jeito (suas cores, foto e textos):**
 
