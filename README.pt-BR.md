@@ -29,7 +29,7 @@ Só quatro botões grandes – **Jogos · Vídeos · Músicas · Fotos** – com
 
 > ⚠️ **Faça antes uma cópia de segurança do cartão SD.** Sempre.
 
-**Opção A – pacote pronto (mais rápido).** Baixe o zip do seu idioma na pasta [`packs`](packs) (clique no arquivo e depois no botão de download ⬇), abra, copie as pastas `cubegm` e `roms` para o cartão SD (responda *Substituir/Mesclar*). Pronto.
+**Opção A – pacote pronto (mais rápido).** Baixe o zip do seu idioma na página de [Releases](../../releases/latest), abra, copie as pastas `cubegm` e `roms` para o cartão SD (responda *Substituir/Mesclar*). Pronto.
 
 **Opção B – montar do seu jeito (suas cores, foto e textos):**
 

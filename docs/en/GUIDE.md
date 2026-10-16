@@ -10,7 +10,7 @@
 
 ## 1. Fastest way: the ready pack
 
-1. Download `R36SX-Kids-Menu-…-en.zip` from the [`packs`](../../packs) folder of this project (click the file, then the download button).
+1. Download `R36SX-Kids-Menu-…-en.zip` from the [Releases](../../../../releases/latest) page of this project.
 2. Open the zip. Copy the folders **`cubegm`** and **`roms`** to the **root of the SD card**. When Windows asks, choose **Replace / Merge**.
 3. Put the card back in the console. Done.
 
