@@ -1,0 +1,12 @@
+# your firmware and your results are never uploaded / seu firmware e seus resultados nunca sobem
+stock/*
+!stock/README.txt
+output/
+sd_ready/
+my_files/*
+!my_files/README.txt
+__pycache__/
+*.pyc
+.venv/
+dist/
+.pytest_cache/

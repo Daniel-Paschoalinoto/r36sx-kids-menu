@@ -1,0 +1,62 @@
+{
+  "_comment": "Todos os textos do menu. Edite à vontade. Mantenha curtos: as caixas são pequenas. / All texts shown by the menu.",
+  "language_name": "Português (Brasil)",
+
+  "sidebar": { "videos": "VÍDEOS", "music": "MÚSICAS", "photos": "FOTOS" },
+
+  "games": {
+    "title": "JOGOS",
+    "enter": "ENTRAR",
+    "hint_line1": "Escolha um jogo",
+    "hint_line2": "e divirta-se!"
+  },
+
+  "explorer": {
+    "title": "JOGOS",
+    "hint": "Escolha um jogo!",
+    "no_cover": "Sem capa"
+  },
+
+  "tips": {
+    "title": "DICAS",
+    "lines": ["Mega Drive: renomeie .bin para .md"]
+  },
+
+  "list_footer": { "delete": "EXCLUIR" },
+
+  "loading": "Carregando...",
+
+  "splash": { "tagline": "Jogos, vídeos, músicas e fotos!" },
+
+  "pause": {
+    "title": "PAUSA",
+    "resume": "VOLTAR AO JOGO",
+    "quit": "SAIR DO JOGO",
+    "load": "CARREGAR SAVE",
+    "save": "SALVAR JOGO",
+    "footer_delete": "EXCLUIR SAVE",
+    "footer_select": "ESCOLHA",
+    "footer_ok": "OK",
+    "footer_back": "VOLTAR",
+    "slot_empty": "Vazio",
+    "overwrite_line1": "Já existe um save aqui.",
+    "overwrite_line2": "Quer sobrescrever?",
+    "unused_favorite_line1": "Remover este jogo dos",
+    "unused_favorite_line2": "favoritos?",
+    "yes": "Sim",
+    "no": "Nao"
+  },
+
+  "search": { "title": "BUSCAR" },
+
+  "dialogs": {
+    "delete_game_title": "Excluir este jogo?",
+    "delete_game_sub": "Apaga capa e arquivos iguais",
+    "delete_save_title": "Excluir este save?",
+    "delete_save_sub": "Apaga só o save deste slot",
+    "confirm_yes": "A  Sim",
+    "confirm_cancel": "B  Cancelar"
+  },
+
+  "placeholder": { "mascot": "Sua imagem aqui", "photo": "Sua foto aqui" }
+}

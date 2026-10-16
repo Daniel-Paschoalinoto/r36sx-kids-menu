@@ -1,0 +1,62 @@
+{
+  "_comment": "All texts shown by the menu. Edit freely. Keep them short: the boxes are small. / Todos os textos do menu.",
+  "language_name": "English",
+
+  "sidebar": { "videos": "VIDEOS", "music": "MUSIC", "photos": "PHOTOS" },
+
+  "games": {
+    "title": "GAMES",
+    "enter": "ENTER",
+    "hint_line1": "Pick a game",
+    "hint_line2": "and have fun!"
+  },
+
+  "explorer": {
+    "title": "GAMES",
+    "hint": "Pick a game!",
+    "no_cover": "No cover"
+  },
+
+  "tips": {
+    "title": "TIPS",
+    "lines": ["Mega Drive: rename .bin to .md"]
+  },
+
+  "list_footer": { "delete": "DELETE" },
+
+  "loading": "Loading...",
+
+  "splash": { "tagline": "Games, videos, music and photos!" },
+
+  "pause": {
+    "title": "PAUSE",
+    "resume": "BACK TO GAME",
+    "quit": "QUIT GAME",
+    "load": "LOAD SAVE",
+    "save": "SAVE GAME",
+    "footer_delete": "DELETE SAVE",
+    "footer_select": "SELECT",
+    "footer_ok": "OK",
+    "footer_back": "BACK",
+    "slot_empty": "Empty",
+    "overwrite_line1": "A save already exists here.",
+    "overwrite_line2": "Overwrite it?",
+    "unused_favorite_line1": "Remove this game from",
+    "unused_favorite_line2": "favorites?",
+    "yes": "Yes",
+    "no": "No"
+  },
+
+  "search": { "title": "SEARCH" },
+
+  "dialogs": {
+    "delete_game_title": "Delete this game?",
+    "delete_game_sub": "Also deletes its cover and matching files",
+    "delete_save_title": "Delete this save?",
+    "delete_save_sub": "Deletes only this slot's save",
+    "confirm_yes": "A  Yes",
+    "confirm_cancel": "B  Cancel"
+  },
+
+  "placeholder": { "mascot": "Your picture here", "photo": "Your photo here" }
+}

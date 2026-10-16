@@ -1,0 +1,93 @@
+# =====================================================================================
+#  R36SX Kids Menu  -  YOUR SETTINGS  /  SUAS CONFIGURAÇÕES
+# =====================================================================================
+#  EN: Open this file with Notepad (or any text editor), change what you like, save,
+#      then run  build.bat  (Windows)  or  ./build.sh  (Linux / Mac).
+#      Lines that start with # are notes and are ignored. Keep the quotes "like this".
+#  PT: Abra este arquivo no Bloco de Notas (ou outro editor), mude o que quiser, salve
+#      e rode  build.bat  (Windows)  ou  ./build.sh  (Linux / Mac).
+#      Linhas que começam com # são anotações e são ignoradas. Mantenha as "aspas".
+# =====================================================================================
+
+[general]
+# EN: Language of the menu. Use "en" (English) or "pt-BR" (Brazilian Portuguese).
+# PT: Idioma do menu. Use "en" (inglês) ou "pt-BR" (português do Brasil).
+language = "en"
+
+# EN: Short text shown at the top-left of the screens (max ~16 letters).
+# PT: Texto curto mostrado no topo das telas (no máximo ~16 letras).
+console_name = "MY GAMES"
+
+# EN: Optional font file (.ttf). Leave empty to use the built-in font. Put your file in "my_files".
+# PT: Fonte opcional (.ttf). Deixe vazio para usar a fonte embutida. Coloque o arquivo em "my_files".
+font = ""
+
+
+[splash]
+# EN: The picture shown when the console starts. Big word and small line under it.
+# PT: A tela mostrada quando o aparelho liga. Palavra grande e frase pequena embaixo.
+big_text = "R36SX"
+small_text = "my retro console"
+
+# EN: Optional photo shown on the start screen (a person, a pet, a drawing...).
+#     Put the file in the folder "my_files" and write its name here.
+#     If the file does not exist, a placeholder picture is drawn instead.
+# PT: Foto opcional da tela inicial (uma pessoa, um bichinho, um desenho...).
+#     Coloque o arquivo na pasta "my_files" e escreva o nome aqui.
+#     Se o arquivo não existir, é desenhada uma imagem no lugar.
+photo = "my_files/photo.jpg"
+
+# EN: Where the face/subject is in the photo, so the square crop is centered on it.
+#     0 = left/top edge, 0.5 = middle, 1 = right/bottom edge.
+# PT: Onde está o rosto/assunto na foto, para o recorte quadrado ficar centralizado nele.
+#     0 = borda esquerda/de cima, 0.5 = meio, 1 = borda direita/de baixo.
+photo_focus_x = 0.5
+photo_focus_y = 0.5
+
+# EN: Zoom of the crop. 1.0 = largest possible square, 2.0 = zoom in twice.
+# PT: Zoom do recorte. 1.0 = maior quadrado possível, 2.0 = aproxima duas vezes.
+photo_zoom = 1.0
+
+
+[menu]
+# EN: Optional picture shown on the right side of the menu screens (a game mascot, a logo...).
+#     Put it in "my_files". If missing, a controller drawing is used.
+# PT: Imagem opcional no lado direito das telas do menu (um mascote, um logo...).
+#     Coloque em "my_files". Se não existir, usa o desenho de um controle.
+mascot = "my_files/mascot.png"
+
+
+[colors]
+# EN: Colors in HTML format (#RRGGBB). Search "color picker" on the web to find codes.
+# PT: Cores em formato HTML (#RRGGBB). Pesquise "seletor de cores" para achar os códigos.
+sky_top = "#2896FF"      # background, top      / fundo, em cima
+sky_bottom = "#0A46BE"   # background, bottom   / fundo, embaixo
+panel = "#081E6E"        # dark boxes           / caixas escuras
+accent = "#FFE028"       # titles and highlight / títulos e destaque
+outline = "#0A2878"      # outline of the titles / contorno dos títulos
+highlight = "#0096FF"    # selected line in lists / linha selecionada nas listas
+
+
+[features]
+# EN: Switch features on (true) or off (false).
+# PT: Liga (true) ou desliga (false) os recursos.
+
+# EN: When the console is switched on, open the last game by itself (hold B to skip it).
+# PT: Ao ligar o aparelho, abre sozinho o último jogo (segure B para pular).
+resume_last_game = true
+
+# EN: Press X on a game in the GAMES list to delete it (asks first).
+# PT: Tecla X sobre um jogo na lista de JOGOS para excluí-lo (pergunta antes).
+delete_game = true
+
+# EN: Press X on a slot of the pause menu LOAD/SAVE screens to delete that save (asks first).
+# PT: Tecla X sobre um slot nas telas CARREGAR/SALVAR do menu de pausa para excluir o save (pergunta antes).
+delete_save = true
+
+# EN: Hide ".bin" files from the game list (PlayStation games start from the ".cue" file).
+# PT: Esconde arquivos ".bin" da lista (jogos de PlayStation abrem pelo arquivo ".cue").
+hide_bin_files = true
+
+# EN: Faster PlayStation 3D: turns off lighting effects and the FPS counter.
+# PT: PlayStation 3D mais rápido: desliga efeitos de iluminação e o contador de FPS.
+psx_speed_tweaks = true
