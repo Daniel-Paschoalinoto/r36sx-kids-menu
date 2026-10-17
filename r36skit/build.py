@@ -134,7 +134,7 @@ def build(cfg_path: Path | None, stock: Path, out: Path, force: bool = False, lo
     log("[2/6] main menu pictures / imagens do menu principal (UI_Res.cpd)")
     raws, shots = screens.build_ui_res_backgrounds(theme)
     rewrite_zip(cubegm / "UI_Res.cpd", ocube / "UI_Res.cpd", {n + ".raw": b for n, b in raws.items()})
-    for name in ("MovieBg", "MusicBg", "PhotoBg", "DOWNLOAD"):
+    for name in ("MovieBg", "MusicBg", "PhotoBg", "DOWNLOAD", "SetVolume", "SetLight", "SetKeyMap"):
         shots[name].convert("RGB").save(preview / ("menu_%s.png" % name))
 
     # 3. resource.cpd: game list, loading, pause, search, footer ------------------------------------------

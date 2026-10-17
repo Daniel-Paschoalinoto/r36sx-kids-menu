@@ -64,7 +64,10 @@ Copy everything inside **`output`** (the folders `cubegm` and `roms`) to the roo
 
 | You do | What happens |
 |---|---|
-| **L1 / R1** | Switch between Games, Videos, Music, Photos |
+| **L1 / R1** | Go through the pages: Games → Videos/Music/Photos → Settings |
+| **Settings** page: up / down | Choose Volume, Brightness or Controls |
+| **Settings**: left / right | Lower / raise the volume or the brightness |
+| **Settings → Controls**: **A** | Opens the button mapping; **L1 / R1** change the console, up/down/left/right pick a button, **A** assigns it, **B** goes back (each console keeps its own mapping) |
 | **A** | Open / enter |
 | **X** on a game in the list | Delete the game, its cover and files with the same name (asks first) |
 | **X** on a slot in Pause → Load / Save | Delete that save (asks first) |

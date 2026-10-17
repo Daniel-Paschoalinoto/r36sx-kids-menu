@@ -24,7 +24,7 @@ The program is changed by **hooks**: a `j cave; nop` placed over one instruction
 
 | Module | What it does |
 |---|---|
-| `menu_lock.py` | Only 3 media buttons + Games; hides settings / e-books / console list |
+| `menu_lock.py` | Only 3 media buttons + Games; the Settings page only visits volume, brightness and controls (up/down skip language, screen size and factory reset); hides e-books / console list |
 | `listfilter.py` | Hides `.bin` and the `images` folder in the game list |
 | `resume_covers.py` | Cover thumbnails (+ "no cover" picture), opens the game at power-on **only if the console was switched off while playing** (the file `cubegm/lastgame.txt` is deleted when the game ends or when a start does not resume) |
 | `deletegame.py` | X → confirm → run `delgame.sh` (which deletes game, cue files, same-name files, covers) |

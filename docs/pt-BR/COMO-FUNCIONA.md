@@ -24,7 +24,7 @@ O programa é alterado por **ganchos**: um `j cave; nop` colocado sobre uma inst
 
 | Módulo | O que faz |
 |---|---|
-| `menu_lock.py` | Só 3 botões de mídia + Jogos; esconde ajustes / e-books / lista de consoles |
+| `menu_lock.py` | Só 3 botões de mídia + Jogos; a página Ajustes só visita volume, brilho e controles (cima/baixo pulam idioma, tamanho da tela e restaurar); esconde e-books / lista de consoles |
 | `listfilter.py` | Esconde `.bin` e a pasta `images` na lista de jogos |
 | `resume_covers.py` | Miniaturas de capa (+ imagem "sem capa"), abre o jogo ao ligar **só se o aparelho foi desligado jogando** (o arquivo `cubegm/lastgame.txt` é apagado quando o jogo termina ou quando uma partida não retoma) |
 | `deletegame.py` | X → confirma → roda `delgame.sh` (apaga jogo, arquivos do cue, de mesmo nome e capas) |

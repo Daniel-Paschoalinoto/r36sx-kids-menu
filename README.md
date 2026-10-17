@@ -9,13 +9,15 @@ Only four big buttons – **Games · Videos · Music · Photos** – your own co
 |---|---|---|
 | ![menu](docs/images/menu_MovieBg.png) | ![games](docs/images/game_list.png) | ![start](docs/images/start_screen.png) |
 
+![settings](docs/images/settings.png)
+
 > The pictures above are the **built-in placeholders**. You replace them with your own in one minute (see below).
 
-> ⚠️ **Status: early release (v1.0.1).** The menu, the code changes and the build tool were tested on **one** real console (R36SX V2.6 clone, HiChip HC1600A). The *build tool* and the placeholder-art packs were checked on a PC and the file structure matches the original, but the packs were **not yet run on a console**. Please test and [open an issue](../../issues) with your result (works / doesn't, and your model). Keep a backup of your SD card.
+> ⚠️ **Status: early release (v1.0.2).** The menu, the code changes and the build tool were tested on **one** real console (R36SX V2.6 clone, HiChip HC1600A). The *build tool* and the placeholder-art packs were checked on a PC and the file structure matches the original, but the packs were **not yet run on a console**. Please test and [open an issue](../../issues) with your result (works / doesn't, and your model). Keep a backup of your SD card.
 
 ## What you get
 
-- 🧒 Menu reduced to **Games / Videos / Music / Photos** (settings, e-books and console list are hidden).
+- 🧒 Menu reduced to **Games / Videos / Music / Photos**, plus a simple **Settings** page with only **volume, brightness and controls** (button mapping per console). Language, screen size, factory reset, e-books and the console list are hidden.
 - 🎨 **Your colours, texts, language** (English or Português; add more by copying one text file) – everything in one easy file, `config.toml`.
 - 🖼️ **Your photo** on the start screen and a **mascot/logo** on the menus. No picture? A drawn placeholder is used.
 - ▶️ **Resume the game you were playing**: if you switch the console off *while playing*, it re-opens that game at the next power-on. If you quit the game first (or hold **B** at power-on) it starts in the menu.
