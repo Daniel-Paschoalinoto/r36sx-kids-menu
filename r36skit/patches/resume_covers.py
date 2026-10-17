@@ -16,6 +16,11 @@ Four small pieces of code ("caves") live in ``FUN_0040a538`` (a function nothing
          asks the firmware to draw ``roms/images/<game name>.png``; if there is none and the cursor is on a
          game (not on a folder) it draws ``roms/images/<no-cover>.png`` instead.
 
+  cave8  hooked right after the game call returns (0x42fe70)
+         the player left the game -> deletes ``lastgame.txt``.  So the game is only re-opened when the console was
+         switched off WHILE playing (the program is killed and never gets here).  cave4 also deletes the file when a
+         start does not resume (B held, restart after a video/music app, crash).
+
 State flag ``FLAG`` (0x52e9ec, 4 free bytes): 0 = pending, 1 = "A" injected, 2 = finished.
 """
 from __future__ import annotations
@@ -32,7 +37,12 @@ HOOKS = {
     "cave5": (0x42EDDC, "3009a28f01000324"),  # list: first draw / reload
     "cave3": (0x42F80C, "c9ffc0123009a28f"),  # list: "open" key
     "cave7": (0x42F4A0, "3c00e58e3481998f"),  # list: right before the screen refresh
+    "cave8": (0x42FE70, "2330d3031800bc8f"),  # list: right after the game has ended (the call at 0x42fe68 returns)
 }
+
+# Forget the last game when the player has left it.  A power-off while playing never gets here, so the file stays.
+FORGET_AFTER_GAME = b"rm -f /mnt/sdcard/cubegm/lastgame.txt; echo gameexit >> /mnt/sdcard/cubegm/rkgame.log; sync\x00"
+FORGET_AT_START = b"rm -f /mnt/sdcard/cubegm/lastgame.txt; echo startclear >> /mnt/sdcard/cubegm/rkgame.log\x00"
 
 LAST_GAME = b"/mnt/sdcard/cubegm/lastgame.txt\x00"
 READ_BINARY = b"rb\x00"
@@ -153,6 +163,8 @@ AFTERMK:
   b     DONE4
   addiu $s3, $zero, 0x2000
 MARK2:
+  %(forget)s
+  lw    $gp, 0x28($sp)
   lui   $t0, 0x53
   addiu $t1, $zero, 2
   sw    $t1, -0x1614($t0)
@@ -161,7 +173,21 @@ DONE4:
   %(jret)s
   nop
 """ % dict(last=lia("$a0", A["last"]), mark=lia("$a0", A["mark"]), wmode=lia("$a1", A["wmode"]), access=callslot(-0x14F4),
-           fopen=callslot(-0x15D0), fclose=callslot(-0x15C8), jret=jabs(0x4147B8))
+           fopen=callslot(-0x15D0), fclose=callslot(-0x15C8), jret=jabs(0x4147B8),
+           forget=lia("$a0", A["forget_start"]) + "\n" + callslot(-0xBD4))
+
+
+def cave8(A):
+    """The game has ended and we are back in the list: the player is not playing any more -> forget the game."""
+    return """
+  .set noreorder
+  lw    $gp, 0x18($sp)
+  %(forget)s
+  subu  $a2, $fp, $s3
+  lw    $gp, 0x18($sp)
+  %(jret)s
+  nop
+""" % dict(forget=lia("$a0", A["forget_exit"]) + "\n" + callslot(-0xBD4), jret=jabs(0x42FE78))
 
 
 def cave5(A):
@@ -317,7 +343,7 @@ RESUME7:
 """ % dict(thumb=callabs(0x41E370), strcpy=callslot(-0x15A8), semcapa=lia("$a1", A["semcapa"]), jret=jabs(0x42F4A8))
 
 
-CAVES = (("cave3", cave3), ("cave4", cave4), ("cave5", cave5), ("cave7", cave7))
+CAVES = (("cave3", cave3), ("cave4", cave4), ("cave5", cave5), ("cave7", cave7), ("cave8", cave8))
 
 
 def build(no_cover_stem: str = "_no_cover"):
@@ -327,7 +353,8 @@ def build(no_cover_stem: str = "_no_cover"):
     The firmware shows the picture of an entry called ``<stem>.x``, so the placeholder file is ``<stem>.png``.
     """
     strings = [("fmt3", SET_LAST), ("last", LAST_GAME), ("rb", READ_BINARY), ("logp", LOG_PATH), ("amode", APPEND),
-               ("lfmt3", LOG_FORMAT), ("semcapa", cstring(no_cover_stem + ".x")), ("mark", BOOT_MARKER), ("wmode", WRITE)]
+               ("lfmt3", LOG_FORMAT), ("semcapa", cstring(no_cover_stem + ".x")), ("mark", BOOT_MARKER), ("wmode", WRITE),
+               ("forget_exit", FORGET_AFTER_GAME), ("forget_start", FORGET_AT_START)]
     dummy = {name: 0x40A000 for name, _ in strings}
     layout, base = {}, BASE
     for name, fn in CAVES:

@@ -46,7 +46,7 @@ def apply_all(elf: Elf, texts: dict, options: Options | None = None, check_hash:
     for name, (addr, code) in caves.items():
         elf.write(addr, code)
     elf.write(data_addr, data)
-    enabled = ["cave7"] + (["cave3", "cave4", "cave5"] if options.resume_last_game else [])
+    enabled = ["cave7"] + (["cave3", "cave4", "cave5", "cave8"] if options.resume_last_game else [])
     for name in enabled:
         va, original = resume_covers.HOOKS[name]
         elf.hook(va, original, caves[name][0], name)
