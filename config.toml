@@ -72,8 +72,10 @@ highlight = "#0096FF"    # selected line in lists / linha selecionada nas listas
 # EN: Switch features on (true) or off (false).
 # PT: Liga (true) ou desliga (false) os recursos.
 
-# EN: When the console is switched on, open the last game by itself (hold B to skip it).
-# PT: Ao ligar o aparelho, abre sozinho o último jogo (segure B para pular).
+# EN: If the console is switched off WHILE PLAYING, open that game again at the next power-on
+#     (quitting the game first, or holding B at power-on, starts in the menu).
+# PT: Se o aparelho for desligado JOGANDO, reabre esse jogo ao ligar
+#     (sair do jogo antes, ou segurar B ao ligar, abre no menu).
 resume_last_game = true
 
 # EN: Press X on a game in the GAMES list to delete it (asks first).

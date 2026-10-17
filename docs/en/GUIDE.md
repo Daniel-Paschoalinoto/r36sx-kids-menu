@@ -68,7 +68,9 @@ Copy everything inside **`output`** (the folders `cubegm` and `roms`) to the roo
 | **A** | Open / enter |
 | **X** on a game in the list | Delete the game, its cover and files with the same name (asks first) |
 | **X** on a slot in Pause → Load / Save | Delete that save (asks first) |
-| Switch on while holding **B** | Skip "open last game" and go to the menu |
+| Switch the console off **while playing** | Next power-on re-opens that game |
+| Quit the game (Pause → QUIT GAME), then switch off | Next power-on starts in the menu |
+| Switch on while holding **B** | Go to the menu (and forget the last game) |
 
 **Where do I put my files?**
 

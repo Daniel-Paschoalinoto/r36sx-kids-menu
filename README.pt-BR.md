@@ -11,14 +11,14 @@ Só quatro botões grandes – **Jogos · Vídeos · Músicas · Fotos** – com
 
 > As imagens acima são os **placeholders** (imagens de exemplo) que já vêm no projeto. Você troca pelas suas em um minuto.
 
-> ⚠️ **Status: versão inicial (v1.0.0).** O menu, as alterações de código e a ferramenta foram testados em **um** console real (clone R36SX V2.6, HiChip HC1600A). A *ferramenta de build* e os pacotes com imagens de exemplo foram verificados no PC e a estrutura dos arquivos bate com a original, mas os pacotes **ainda não foram executados num console**. Por favor teste e [abra uma issue](../../issues) com o resultado (funcionou / não, e o seu modelo). Mantenha um backup do cartão SD.
+> ⚠️ **Status: versão inicial (v1.0.1).** O menu, as alterações de código e a ferramenta foram testados em **um** console real (clone R36SX V2.6, HiChip HC1600A). A *ferramenta de build* e os pacotes com imagens de exemplo foram verificados no PC e a estrutura dos arquivos bate com a original, mas os pacotes **ainda não foram executados num console**. Por favor teste e [abra uma issue](../../issues) com o resultado (funcionou / não, e o seu modelo). Mantenha um backup do cartão SD.
 
 ## O que você ganha
 
 - 🧒 Menu reduzido a **Jogos / Vídeos / Músicas / Fotos** (ajustes, e-books e lista de consoles ficam ocultos).
 - 🎨 **Suas cores, textos e idioma** (Português ou English; para outro idioma basta copiar um arquivo de textos) – tudo em um arquivo simples, o `config.toml`.
 - 🖼️ **Sua foto** na tela de abertura e um **mascote/logo** nos menus. Sem imagem? Usa uma imagem desenhada.
-- ▶️ **Volta sozinho ao último jogo** ao ligar o aparelho (segure **B** para ir ao menu).
+- ▶️ **Volta ao jogo que estava rodando**: se você desligar o aparelho *jogando*, ele reabre esse jogo ao ligar. Se saiu do jogo antes (ou segurou **B** ao ligar), liga no menu.
 - 🗑️ **Tecla X exclui um jogo** – apaga o jogo, os arquivos do `.cue`, os de mesmo nome e a capa (pergunta antes).
 - 💾 **Tecla X exclui um save** nas telas Carregar/Salvar do menu de pausa.
 - 🙈 Arquivos `.bin` escondidos da lista (jogos de PlayStation abrem pelo `.cue`).

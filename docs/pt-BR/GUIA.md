@@ -68,7 +68,9 @@ Copie tudo que está dentro de **`output`** (as pastas `cubegm` e `roms`) para a
 | **A** | Abrir / entrar |
 | **X** sobre um jogo da lista | Exclui o jogo, a capa e os arquivos de mesmo nome (pergunta antes) |
 | **X** sobre um slot em Pausa → Carregar / Salvar | Exclui aquele save (pergunta antes) |
-| Ligar segurando **B** | Pula o "abrir último jogo" e vai ao menu |
+| Desligar o aparelho **jogando** | Ao ligar, reabre esse jogo |
+| Sair do jogo (Pausa → SAIR DO JOGO) e depois desligar | Ao ligar, abre no menu |
+| Ligar segurando **B** | Vai ao menu (e esquece o último jogo) |
 
 **Onde coloco meus arquivos?**
 
