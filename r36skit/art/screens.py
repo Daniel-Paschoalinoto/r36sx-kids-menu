@@ -117,11 +117,11 @@ def tips_box(im, theme, box):
     w, h = x1 - x0, y1 - y0
     panel(im, box, theme.rgba("panel", 200), theme.rgba("accent"), 3, 16)
     d = ImageDraw.Draw(im)
-    d.text((x0 + 14, y0 + 16), theme.t["tips.title"], font=theme.font(18), fill=theme.accent, anchor="lm")
+    d.text((x0 + 14, y0 + 15), theme.t["tips.title"], font=theme.font(18), fill=theme.accent, anchor="lm")
     lines = theme.t["tips.lines"][:2]
     for i, line in enumerate(lines):
         text = "- " + line
-        d.text((x0 + 14, y0 + 42 + i * 21), text, font=theme.fit_font(text, 16, w - 28), fill=WHITE, anchor="lm")
+        d.text((x0 + 14, y0 + 43 + i * 21), text, font=theme.fit_font(text, 16, w - 28), fill=WHITE, anchor="lm")
 
 
 def screen_menu(theme, selected):
@@ -130,7 +130,7 @@ def screen_menu(theme, selected):
     im.alpha_composite(mascot_card(theme, 262, 4), (322, 80))
     add_stars(im, theme, [(300, 300, 34), (318, 360, 30)])
     sidebar(im, theme, selected)
-    tips_box(im, theme, (14, 330, 292, 398))
+    tips_box(im, theme, (14, 322, 292, 404))
     return im
 
 
@@ -157,15 +157,122 @@ def screen_games(theme):
 
 
 def build_ui_res_backgrounds(theme):
-    """name -> BGRA raw bytes for the five full-screen pictures of UI_Res.cpd."""
+    """name -> BGRA raw bytes for the full-screen pictures (and the small bar/version sprites) of UI_Res.cpd."""
     shots = {"MovieBg": screen_menu(theme, 0), "MusicBg": screen_menu(theme, 1), "PhotoBg": screen_menu(theme, 2),
              "E-BookBg": screen_menu(theme, 3), "DOWNLOAD": screen_games(theme)}
-    return {name: to_bgra(im) for name, im in shots.items()}, shots
+    for index, name in SETTINGS_PAGES.items():
+        shots[name] = settings_bg(theme, index)
+    raws = {name: to_bgra(im) for name, im in shots.items()}
+    raws["Volume"] = volume_sprite(theme)
+    raws["VersionNumber"] = version_sprite(theme)
+    return raws, shots
 
 
 def to_bgra(im):
     im = im.convert("RGBA")
     assert im.size == (W, H)
+    return im.tobytes("raw", "BGRA")
+
+
+# ---------------------------------------------------------------------------------------------
+# settings page: volume, brightness, controls   ->  UI_Res.cpd (Set*.raw, Volume.raw, VersionNumber.raw)
+# ---------------------------------------------------------------------------------------------
+# The firmware shows one of six pictures depending on the selected row; we only ever select rows 0, 1 and 4.
+SETTINGS_PAGES = {0: "SetVolume", 1: "SetLight", 2: "SetLanguage", 3: "SetScreen", 4: "SetKeyMap", 5: "SetFacRest"}
+ROW_Y = {"volume": 143, "light": 190, "controls": 240}  # centre of each visible row
+BAR_INNER = {"volume": 137, "light": 185}  # top of the 200x11 bar drawn by the firmware (x = 117 selected, 99 not)
+
+
+def icon_speaker(sz=40):
+    def f(d, s):
+        k = sz * s
+        d.polygon([(k * 0.12, k * 0.38), (k * 0.30, k * 0.38), (k * 0.52, k * 0.18), (k * 0.52, k * 0.82),
+                   (k * 0.30, k * 0.62), (k * 0.12, k * 0.62)], fill=WHITE)
+        d.arc((k * 0.50, k * 0.30, k * 0.74, k * 0.70), -55, 55, fill=WHITE, width=int(2.5 * s))
+        d.arc((k * 0.50, k * 0.16, k * 0.92, k * 0.84), -55, 55, fill=WHITE, width=int(2.5 * s))
+    return ss(f, (sz, sz))
+
+
+def icon_sun(sz=40):
+    import math
+
+    def f(d, s):
+        k = sz * s
+        c = k / 2
+        d.ellipse((c - k * 0.17, c - k * 0.17, c + k * 0.17, c + k * 0.17), fill=(255, 224, 40, 255), outline=WHITE,
+                  width=int(1.5 * s))
+        for i in range(8):
+            a = i * math.pi / 4
+            d.line([(c + k * 0.26 * math.cos(a), c + k * 0.26 * math.sin(a)),
+                    (c + k * 0.42 * math.cos(a), c + k * 0.42 * math.sin(a))], fill=WHITE, width=int(2.5 * s))
+    return ss(f, (sz, sz))
+
+
+def _row_pill(im, theme, cy, selected):
+    box = (14, cy - 22, 626, cy + 22)
+    S = 3
+    w, h = box[2] - box[0], box[3] - box[1]
+    pill = Image.new("RGBA", (w * S, h * S), (0, 0, 0, 0))
+    pd = ImageDraw.Draw(pill)
+    if selected:
+        pd.rounded_rectangle((0, 0, w * S - 1, h * S - 1), radius=22 * S, fill=theme.rgba("highlight", 245),
+                             outline=WHITE, width=4 * S)
+    else:
+        pd.rounded_rectangle((0, 0, w * S - 1, h * S - 1), radius=22 * S, fill=theme.rgba("panel", 120),
+                             outline=(255, 255, 255, 130), width=2 * S)
+    im.alpha_composite(pill.resize((w, h), Image.LANCZOS), (box[0], box[1]))
+
+
+def _bar_track(im, theme, key, selected):
+    """Frame around the 200x11 bar that the firmware draws on top (the interior is dark)."""
+    top = BAR_INNER[key]
+    x0 = 117 if selected else 99
+    box = (x0 - 6, top - 5, x0 + 206, top + 16)
+    panel(im, box, theme.rgba("panel", 255), WHITE if selected else (255, 255, 255, 170), 2, 10)
+    if selected:
+        cy = top + 5
+        d = ImageDraw.Draw(im)
+        d.polygon([(100, cy), (108, cy - 6), (108, cy + 6)], fill=theme.accent)
+        d.polygon([(334, cy), (326, cy - 6), (326, cy + 6)], fill=theme.accent)
+
+
+def settings_bg(theme, selected):
+    """Settings page picture.  ``selected``: 0 volume, 1 brightness, 4 controls, anything else = none."""
+    t = theme.t
+    im = sky(theme)
+    add_stars(im, theme, [(560, 20, 34), (596, 34, 26), (30, 330, 34), (300, 340, 28), (560, 330, 36)])
+    panel(im, (8, 100, 632, 284), theme.rgba("panel", 150), (255, 255, 255, 220), 3, 22)
+    rows = (("volume", 0, icon_speaker, t["settings.volume"]), ("light", 1, icon_sun, t["settings.brightness"]),
+            ("controls", 4, icon_pad, None))
+    for key, index, icon, label in rows:
+        cy = ROW_Y[key]
+        sel = selected == index
+        _row_pill(im, theme, cy, sel)
+        im.alpha_composite(icon(34), (24, cy - 17))
+        if key in BAR_INNER:
+            _bar_track(im, theme, key, sel)
+            outlined_text(im, (350, cy), label, theme.fit_font(label, 22, 262), theme.accent if sel else WHITE,
+                          theme.outline, 3)
+    return im
+
+
+def volume_sprite(theme):
+    """Volume.raw: three 200x11 pictures: filled (selected row), empty (selected row), filled (other row)."""
+    def bar(top, bottom):
+        im = gradient(top, bottom, 200, 11)
+        ImageDraw.Draw(im).line([(0, 0), (199, 0)], fill=(255, 255, 255, 120))
+        return im
+    dim = tuple(int(c * 0.55 + p * 0.45) for c, p in zip(theme.accent, theme.panel))
+    frames = [bar(theme.accent, tuple(int(c * 0.78) for c in theme.accent)),
+              Image.new("RGBA", (200, 11), theme.panel + (255,)),
+              bar(dim, tuple(int(c * 0.8) for c in dim))]
+    return b"".join(f.tobytes("raw", "BGRA") for f in frames)
+
+
+def version_sprite(theme):
+    """VersionNumber.raw (320x21): small text at the top right of the settings page."""
+    im = Image.new("RGBA", (320, 21), (0, 0, 0, 0))
+    ImageDraw.Draw(im).text((4, 11), theme.version_label, font=theme.font(15), fill=(255, 255, 255, 235), anchor="lm")
     return im.tobytes("raw", "BGRA")
 
 
@@ -462,6 +569,9 @@ def build_footbar3(theme, stock_footbar3: bytes):
 # language label sprites (same picture repeated for every language)   ->  cubegm/language/*.raw
 # ---------------------------------------------------------------------------------------------
 NLANG = 25
+# language, screen size and factory reset are not reachable: their labels are blank (same size as the originals)
+HIDDEN_ROW_SPRITES = {"Language": (320, 40), "Language_": (320, 40), "Screen": (640, 40), "Screen_": (640, 40),
+                      "Factry": (320, 40), "Factry_": (320, 40)}
 
 
 def text_sprite(theme, w, h, text, size, fill, outline=None, ow=3, x=0):
@@ -489,4 +599,12 @@ def build_language_sprites(theme):
     frames["E-Book_"] = blank
     for name in ("Title_Media", "Title_Game"):
         frames[name] = text_sprite(theme, 192, 40, theme.cfg.console_name, 21, acc, out_c, 3, 2)
-    return {n + ".raw": fr.tobytes("raw", "BGRA") * NLANG for n, fr in frames.items()}
+    title = s["settings.title"]
+    frames["Title_Setting"] = text_sprite(theme, 192, 40, title, 21, acc, out_c, 3, 2)
+    controls = s["settings.controls"]
+    frames["KeyMapp"] = text_sprite(theme, 320, 40, controls, 24, acc, out_c, 3)
+    frames["KeyMapp_"] = text_sprite(theme, 320, 40, controls, 24, WHITE, out_c, 3)
+    out = {n + ".raw": fr.tobytes("raw", "BGRA") * NLANG for n, fr in frames.items()}
+    for name, (w, h) in HIDDEN_ROW_SPRITES.items():  # rows that can never be selected: draw nothing
+        out[name + ".raw"] = bytes(w * h * 4 * NLANG)
+    return out

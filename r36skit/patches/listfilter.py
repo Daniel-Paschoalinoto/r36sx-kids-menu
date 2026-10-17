@@ -11,7 +11,7 @@ We pass a filter function (``scandir`` calls it for every entry; non-zero = keep
   * ``.bin`` is removed from that table on purpose (see ``hide_bin``): a PlayStation game is started from its
     ``.cue`` and the ``.bin`` next to it only confuses people.  Mega Drive ROMs just need the extension ``.md``.
 
-The filter lives in dead code (0x414c88 and 0x415134 - the old "go to settings" handlers).
+The filter lives in ``FUN_004111bc``, a function nothing calls (760 bytes).
 Its address is stored in a spare word (0x52e9e8) and loaded by the ``scandir`` call.
 """
 from __future__ import annotations
@@ -19,11 +19,12 @@ from __future__ import annotations
 from ..elfpatch import Elf
 from .mips import asm
 
-FILTER_AT = 0x414C88
-FILTER_ORIGINAL = "4800a28f"  # dead code: first instruction of the old handler
-IMAGES_AT = 0x415134
-IMAGES_ORIGINAL = "b4004524"
-KEEP, DROP = 0x414D1C, 0x414D24
+FILTER_AT = 0x4111BC
+FILTER_ORIGINAL = "12001c3c"  # first instruction of the unused function (lui gp,0x12)
+FILTER_SIZE = 164
+IMAGES_AT = FILTER_AT + FILTER_SIZE
+IMAGES_ORIGINAL = "01004224"
+KEEP, DROP = FILTER_AT + FILTER_SIZE - 16, FILTER_AT + FILTER_SIZE - 8  # the last two "jr ra" stubs of the filter
 POINTER_SLOT = 0x52E9E8  # 4 spare bytes, read with ``lw a2,-0x7ff8(gp)``
 EXT_TABLE_BIN = 0x52C618  # the "BIN" entry of the extension table
 

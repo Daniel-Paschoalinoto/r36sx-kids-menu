@@ -19,7 +19,7 @@
 
   "tips": {
     "title": "TIPS",
-    "lines": ["Mega Drive: rename .bin to .md"]
+    "lines": ["Mega Drive: rename .bin to .md", "L / R: volume, brightness, controls"]
   },
 
   "list_footer": { "delete": "DELETE" },
@@ -58,5 +58,7 @@
     "confirm_cancel": "B  Cancel"
   },
 
-  "placeholder": { "mascot": "Your picture here", "photo": "Your photo here" }
+  "placeholder": { "mascot": "Your picture here", "photo": "Your photo here" },
+
+  "settings": {"title": "SETTINGS", "volume": "VOLUME", "brightness": "BRIGHTNESS", "controls": "CONTROLS"}
 }

@@ -29,6 +29,12 @@ class Theme:
         self.highlight = p.highlight
         self.dark = tuple(min(255, int(c * 1.25) + 6) for c in p.outline)  # text on the accent-coloured pill
         self._font_cache: dict[int, ImageFont.FreeTypeFont] = {}
+        from .. import __version__
+        self.version_label = "Kids Menu v%s" % __version__
+
+    def deco(self, size: int) -> Image.Image:
+        """Little decoration scattered on the screens (a star; subclasses may draw something else)."""
+        return star(self, size)
 
     # ---- fonts -------------------------------------------------------------------------------
     def font(self, size: int) -> ImageFont.FreeTypeFont:
@@ -100,7 +106,7 @@ def star(theme: Theme, size=40) -> Image.Image:
 
 def add_stars(im, theme, pts):
     for x, y, s in pts:
-        im.alpha_composite(star(theme, s), (x, y))
+        im.alpha_composite(theme.deco(s), (x, y))
     return im
 
 

@@ -19,7 +19,7 @@
 
   "tips": {
     "title": "DICAS",
-    "lines": ["Mega Drive: renomeie .bin para .md"]
+    "lines": ["Mega Drive: renomeie .bin para .md", "L / R: volume, brilho, controles"]
   },
 
   "list_footer": { "delete": "EXCLUIR" },
@@ -58,5 +58,7 @@
     "confirm_cancel": "B  Cancelar"
   },
 
-  "placeholder": { "mascot": "Sua imagem aqui", "photo": "Sua foto aqui" }
+  "placeholder": { "mascot": "Sua imagem aqui", "photo": "Sua foto aqui" },
+
+  "settings": {"title": "AJUSTES", "volume": "VOLUME", "brightness": "BRILHO", "controls": "CONTROLES"}
 }
