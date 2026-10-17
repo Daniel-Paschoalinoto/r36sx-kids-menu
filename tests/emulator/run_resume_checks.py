@@ -1,4 +1,4 @@
-"""Emulator test (Unicorn) of the resume / cover caves.  Run:  python tests/emulator/test_resume.py
+"""Emulator test (Unicorn) of the resume / cover caves.  Run:  python tests/emulator/run_resume_checks.py
 
 Teste em emulador (Unicorn) das cavernas de retomar jogo / capas.  Needs: pip install unicorn
 """

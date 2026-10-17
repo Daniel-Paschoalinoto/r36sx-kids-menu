@@ -41,4 +41,6 @@ O `elfpatch.py` grava por endereço virtual e confere os bytes originais antes d
 
 ## Testes
 
+`python tests/emulator/run_resume_checks.py` (precisa de `pip install unicorn`) roda o código de retomar jogo/capas num emulador de CPU.
+
 `python -m pytest` confere os textos em todos os idiomas, os tamanhos das imagens, as mensagens de erro da configuração e (se você colocar seus arquivos originais em `stock/`) se os patches se aplicam.

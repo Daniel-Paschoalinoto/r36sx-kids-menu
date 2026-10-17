@@ -41,4 +41,6 @@ The program is changed by **hooks**: a `j cave; nop` placed over one instruction
 
 ## Tests
 
+`python tests/emulator/run_resume_checks.py` (needs `pip install unicorn`) runs the resume/cover code in a CPU emulator.
+
 `python -m pytest` checks texts in all languages, picture sizes, the config error messages and (if you put your stock files in `stock/`) that the patches apply.
