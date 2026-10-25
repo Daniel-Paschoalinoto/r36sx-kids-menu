@@ -6,7 +6,7 @@ How the stock program is organised / Como o programa original é organizado
   mode 0  carousel of 18 entries (All games, MAME, PS1, ..., DOWNLOAD (= the ``roms`` folder), Favorites, History)
   mode 1  media list: Movie, Music, Photo, E-Book
   mode 2  settings: row 0 volume, 1 brightness, 2 language, 3 screen size, 4 key map (controls), 5 factory reset
-  L / R shoulder buttons cycle the three pages.
+  L / R shoulder buttons cycle the three pages (stock: L goes 0->1->2->0; here R goes to the next page).
 
 What we change / O que mudamos
   * the program always starts in mode 0 on the DOWNLOAD entry (index 15) and ignores up/down in the carousel;
@@ -37,6 +37,13 @@ KIDS_MENU = [
     (0x412BA8, "edfe1104", "00000000", "hide the page-dot column"),
     (0x412BF0, "dbfe1104", "00000000", "hide the selected page dot"),
     (0x413130, "3c010224", "dc000224", "settings: label of the 'controls' row on the third slot (y=0xdc, was 0x13c)"),
+    # Page order Games -> Media -> Settings: R = next page, L = previous page (the stock program does the opposite).
+    (0x4147C4, "0c016212", "30016212", "games page, L: go to Settings (previous page)"),
+    (0x414894, "fc006212", "d8006212", "games page, R: go to Media (next page)"),
+    (0x414974, "eb010212", "ce010212", "media page, L: go to Games (previous page)"),
+    (0x414A6C, "90010212", "ad010212", "media page, R: go to Settings (next page)"),
+    (0x4149C0, "00040224", "00080224", "settings page: the 'to Games' handler now answers R (next page)"),
+    (0x414240, "00080224", "00040224", "settings page: the 'to Media' handler now answers L (previous page)"),
 ]
 
 # Free space: FUN_00418b4c (712 bytes, nothing calls it).

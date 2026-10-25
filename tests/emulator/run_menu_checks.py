@@ -48,9 +48,26 @@ def machine(elf):
 
 
 # ---------- 1. the settings-entry code is the stock code again ----------
-for va, size, what in ((0x414894, 8, "mode 0: R -> settings"), (0x414974, 8, "mode 1: L -> settings"),
-                       (0x414C88, 0x10C, "settings-entry block A"), (0x415124, 0x130, "settings-entry block B")):
+for va, size, what in ((0x414C88, 0x10C, "settings-entry block A"), (0x415124, 0x130, "settings-entry block B")):
     chk("stock bytes kept: " + what, stock.read(va, size) == patched.read(va, size))
+
+
+# ---------- 1b. page order: R = next page, L = previous page ----------
+def beq_target(elf, va):
+    word = int.from_bytes(elf.read(va, 4), "little")
+    assert (word >> 26) == 4, hex(va)
+    off = word & 0xFFFF
+    off -= 0x10000 if off & 0x8000 else 0
+    return va + 4 + off * 4
+
+
+MEDIA_ENTRY, SETTINGS_ENTRY_A, SETTINGS_ENTRY_B, TO_GAMES_FROM_MEDIA = 0x414BF8, 0x414C88, 0x415124, 0x4150B0
+chk("games page: R -> media", beq_target(patched, 0x414894) == MEDIA_ENTRY)
+chk("games page: L -> settings", beq_target(patched, 0x4147C4) == SETTINGS_ENTRY_A)
+chk("media page: R -> settings", beq_target(patched, 0x414A6C) == SETTINGS_ENTRY_B)
+chk("media page: L -> games", beq_target(patched, 0x414974) == TO_GAMES_FROM_MEDIA)
+chk("settings page: R is the 'to games' handler (inline), L the 'to media' handler",
+    patched.read(0x4149C0, 4).hex() == "00080224" and patched.read(0x414240, 4).hex() == "00040224")
 
 # ---------- 2. settings page: rows 0 -> 1 -> 4 and back ----------
 mu = machine(patched)
