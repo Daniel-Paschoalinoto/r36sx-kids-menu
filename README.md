@@ -13,7 +13,7 @@ Only four big buttons – **Games · Videos · Music · Photos** – your own co
 
 > The pictures above are the **built-in placeholders**. You replace them with your own in one minute (see below).
 
-> ⚠️ **Status: early release (v1.0.2).** The menu, the code changes and the build tool were tested on **one** real console (R36SX V2.6 clone, HiChip HC1600A). The *build tool* and the placeholder-art packs were checked on a PC and the file structure matches the original, but the packs were **not yet run on a console**. Please test and [open an issue](../../issues) with your result (works / doesn't, and your model). Keep a backup of your SD card.
+> ⚠️ **Status: early release (v1.0.3).** The menu, the code changes and the build tool were tested on **one** real console (R36SX V2.6 clone, HiChip HC1600A). The *build tool* and the placeholder-art packs were checked on a PC and the file structure matches the original, but the packs were **not yet run on a console**. Please test and [open an issue](../../issues) with your result (works / doesn't, and your model). Keep a backup of your SD card.
 
 ## What you get
 

@@ -64,7 +64,7 @@ Copie tudo que está dentro de **`output`** (as pastas `cubegm` e `roms`) para a
 
 | Você faz | O que acontece |
 |---|---|
-| **L1 / R1** | Percorrem as páginas: Jogos → Vídeos/Músicas/Fotos → Ajustes |
+| **R1** / **L1** | Próxima / página anterior: Jogos → Vídeos/Músicas/Fotos → Ajustes → Jogos |
 | Página **Ajustes**: cima / baixo | Escolhem Volume, Brilho ou Controles |
 | **Ajustes**: esquerda / direita | Diminuem / aumentam o volume ou o brilho |
 | **Ajustes → Controles**: **A** | Abre o mapeamento de teclas; **L1 / R1** trocam o console, as setas escolhem o botão, **A** atribui, **B** volta (cada console guarda o seu mapeamento) |
