@@ -85,6 +85,15 @@ Copie tudo que está dentro de **`output`** (as pastas `cubegm` e `roms`) para a
 
 Dicas: jogos de **Mega Drive** precisam terminar em `.md` (renomeie `.bin` → `.md`). Jogos de **PlayStation** abrem pelo arquivo `.cue` (o `.bin` fica escondido ao lado).
 
+### Jogos de arcade e Neo Geo
+
+- Esses jogos são arquivos `.zip`, e o aparelho os reconhece pelo **nome do zip** (o nome do "romset"), por exemplo `fatfury3.zip`. Não descompacte e não renomeie para um título amigável.
+- Dentro do zip os arquivos ficam direto nele (sem subpasta) e mantêm os nomes originais (no Fatal Fury 3: `069-c1.c1`, `069-p1.p1`, `069-m1.m1`...).
+- O Neo Geo também precisa do BIOS `neogeo.zip`. No cartão original ele já está em `cubegm/cores/bios`: deixe lá. Este projeto não inclui nenhum BIOS.
+- Capa: `roms/images/fatfury3.png`, com o **mesmo nome do zip**.
+- Os núcleos de arcade esperam versões específicas do romset. Se um jogo não abrir, a versão é a causa mais provável.
+- Testado pelo autor: o Fatal Fury 3 (Neo Geo) roda. Use apenas jogos que você possui legalmente.
+
 ## 4. Personalizar mais
 
 - **Mudar um texto** (botões, dicas…): edite `r36skit/data/strings/pt-BR.json` (ou seu idioma) e gere de novo. Mantenha curto – as caixas são pequenas.

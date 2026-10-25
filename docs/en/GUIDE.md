@@ -85,6 +85,15 @@ Copy everything inside **`output`** (the folders `cubegm` and `roms`) to the roo
 
 Tips: **Mega Drive** games must end in `.md` (rename `.bin` → `.md`). **PlayStation** games open from the `.cue` file (the `.bin` stays hidden next to it).
 
+### Arcade and Neo Geo games
+
+- These games are `.zip` files, and the console recognises them by the **name of the zip** (the "romset" name), for example `fatfury3.zip`. Do not unzip them and do not rename them to a friendly title.
+- Inside the zip the files must sit directly in it (no sub-folder) and keep their original names (for Fatal Fury 3: `069-c1.c1`, `069-p1.p1`, `069-m1.m1`...).
+- Neo Geo also needs the BIOS `neogeo.zip`. On the original card it is already in `cubegm/cores/bios`: leave it there. This project does not include any BIOS.
+- Cover: `roms/images/fatfury3.png`, with the **same name as the zip**.
+- The arcade cores expect specific romset versions. If a game does not open, the version is the most likely cause.
+- Tested by the author: Fatal Fury 3 (Neo Geo) runs. Use only games you legally own.
+
 ## 4. Customising further
 
 - **Change a text** (buttons, tips…): edit `r36skit/data/strings/en.json` (or your language) and build again. Keep texts short – the boxes are small.
